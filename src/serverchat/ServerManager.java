@@ -170,7 +170,7 @@ public class ServerManager implements MessageListener
         }
     }
     public static int Inteiro(String mensagem, String porta){
-		ImageIcon icone = new ImageIcon("icone.png");
+		ImageIcon icone = new ImageIcon(ServerMonitor.class.getResource("/media/icone-1.png"));
 		int verifica = 0;
 		int numero = 0;
 		do{
