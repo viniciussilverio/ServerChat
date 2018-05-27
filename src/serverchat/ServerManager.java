@@ -8,12 +8,13 @@ import java.net.SocketException;
 import java.util.StringTokenizer;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import javax.swing.JOptionPane;
 
 public class ServerManager implements MessageListener
 {
     public static final int CLIENT_NUMBER=100;
     public static final String DISCONNECT_STRING="DISCONNECT";
-    public static final int SERVER_PORT=12345;
+    int SERVER_PORT;
     public static final int BACKLOG=100;
     public static final int MULTICAST_SENDING_PORT=5555;
     public static final int MULTICAST_LISTENING_PORT=5554;
@@ -36,6 +37,7 @@ public class ServerManager implements MessageListener
     {
         try
         {
+            SERVER_PORT = Integer.parseInt(JOptionPane.showInputDialog("Digite o número da Porta: ", "12345"));
             statusListener.status("O servidor está escutando na porta: "+SERVER_PORT);
 
             server=new ServerSocket(SERVER_PORT,BACKLOG);
