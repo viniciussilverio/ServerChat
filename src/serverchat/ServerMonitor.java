@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.ListSelectionModel;
 import java.util.*;
+import javax.swing.ImageIcon;
 
 public class ServerMonitor extends javax.swing.JFrame {
 
@@ -51,6 +52,7 @@ public class ServerMonitor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ChatServer");
+        setIconImage(new ImageIcon(ServerMonitor.class.getResource("/media/icone-1.png")).getImage());
 
 
         ta_monitor_clients.setColumns(20);
