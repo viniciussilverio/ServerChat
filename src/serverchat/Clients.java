@@ -46,7 +46,7 @@ public class Clients implements Runnable
             try
             {
                 message = (String) input.readObject();
-                System.out.println("Server is receiving   "+ message);
+                System.out.println("O servidor está recebendo   "+ message);
                 StringTokenizer tokens=new StringTokenizer(message);
                 String header=tokens.nextToken();
                 name=tokens.nextToken();
@@ -55,7 +55,7 @@ public class Clients implements Runnable
                     serverManager.sendNameToAll(message);
                     ServerManager.clientTracker[clientNumber]=name;
 
-                    for(int i=0;i<serverManager.clientNumber;i++) //Create & send  users list
+                    for(int i=0;i<serverManager.clientNumber;i++) //Cria e envia a lista de usuários
                     {
                         String userName=ServerManager.clientTracker[i];
                         if(!userName.equalsIgnoreCase(""))
@@ -67,7 +67,7 @@ public class Clients implements Runnable
                     }
 
                     clientListener.signIn(name);
-                    clientListener.clientStatus(name+": is signIn , IPaddress :"+client.getInetAddress()+"  ,portNumber :"+client.getPort()+" by sharma");
+                    clientListener.clientStatus(name+": está logado , IP :"+client.getInetAddress()+"  ,porta :"+client.getPort());
                     String ip ="";
                     ip += client.getInetAddress();
                     clientListener.mapped(name,ip);
@@ -78,22 +78,6 @@ public class Clients implements Runnable
                     serverManager.sendNameToAll(message);
                     ServerManager.clientTracker[clientNumber]="";
                     keepListening=false;
-                }
-                
-                else if(header.equalsIgnoreCase("video"))
-                {
-                	String name1 = tokens.nextToken();
-                	String rec_ip = ServerMonitor.hm.get(name1);
-                	
-                	String sen_ip = ServerMonitor.hm.get(name);
-                	String message1 = name+" video "+rec_ip;
-                	System.out.println("server ip back"+message1);
-                	serverManager.sendInfo(message1);
-                	
-                    String messa2 = name1+" video1 "+sen_ip;
-                	serverManager.sendInfo(messa2);
-                	
-                		
                 }
       
                 else

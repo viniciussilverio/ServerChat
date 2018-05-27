@@ -36,14 +36,14 @@ public class ServerManager implements MessageListener
     {
         try
         {
-            statusListener.status("Server is Listening on port : "+SERVER_PORT);
+            statusListener.status("O servidor está escutando na porta: "+SERVER_PORT);
 
             server=new ServerSocket(SERVER_PORT,BACKLOG);
             serverExeCutor.execute(new ConnectionController(statusListener,clientListener));
         }
         catch(IOException ioe)
         {
-            statusListener.status("IOException occured When Server start");
+            statusListener.status("Erro ao iniciar o servidor");
         }
     }
 
@@ -52,17 +52,15 @@ public class ServerManager implements MessageListener
         try 
         {
             server.close();
-            statusListener.status("Server is stoped");
+            statusListener.status("O servidor está parado");
         }
         catch(SocketException ex)
         {
-            //ex.printStackTrace();
-            statusListener.status("SocketException Occured When Server is going to stoped");
+            statusListener.status("Erro de Socket");
         }
         catch (IOException ioe)
         {
-            //ioe.printStackTrace();
-            statusListener.status("IOException Occured When Server is going to stoped");
+            statusListener.status("Erro de leitura");
         }
     }
 
@@ -76,7 +74,6 @@ public class ServerManager implements MessageListener
                 client[clientNumber]=new Clients(clientListener,clientSocket,this,clientNumber);
                 serverExeCutor.execute(client[clientNumber]);
                 clientNumber++;
-                //System.out.println(clientNumber);
             }
             catch(SocketException ex)
             {
@@ -86,13 +83,12 @@ public class ServerManager implements MessageListener
             catch (IOException ioe)
             {
                 ioe.printStackTrace();
-                statusListener.status("Some Problem Occured When connection received");
+                statusListener.status("Erro não especificado!!!");
                 break;
             }
         }
     }
 
-       // for sending particular Client
     public void sendInfo(String message)
     {
         StringTokenizer tokens=new StringTokenizer(message);
@@ -143,7 +139,7 @@ public class ServerManager implements MessageListener
         {
             try
             {
-                System.out.println("Server is sending   "+ message);
+                System.out.println("O servidor está enviando   "+ message);
                 client[i].output.writeObject(message);
                 client[i].output.flush();
             }
