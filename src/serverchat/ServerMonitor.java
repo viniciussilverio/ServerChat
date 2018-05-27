@@ -52,7 +52,6 @@ public class ServerMonitor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ChatServer");
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
         ta_monitor_clients.setColumns(20);
         ta_monitor_clients.setEditable(false);

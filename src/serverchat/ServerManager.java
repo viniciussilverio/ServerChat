@@ -8,6 +8,7 @@ import java.net.SocketException;
 import java.util.StringTokenizer;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class ServerManager implements MessageListener
@@ -37,7 +38,9 @@ public class ServerManager implements MessageListener
     {
         try
         {
-            SERVER_PORT = Integer.parseInt(JOptionPane.showInputDialog("Digite o número da Porta: ", "12345"));
+            do{
+            SERVER_PORT = Inteiro("Digite o número da Porta: ", "12345");
+            }while(SERVER_PORT < 1 || SERVER_PORT > 65535 );
             statusListener.status("O servidor está escutando na porta: "+SERVER_PORT);
 
             server=new ServerSocket(SERVER_PORT,BACKLOG);
@@ -166,4 +169,19 @@ public class ServerManager implements MessageListener
             controllConnection(statusListener,clientListener);
         }
     }
+    public static int Inteiro(String mensagem, String porta){
+		ImageIcon icone = new ImageIcon("icone.png");
+		int verifica = 0;
+		int numero = 0;
+		do{
+			try{
+				verifica = 1;
+				numero = Integer.parseInt((String)JOptionPane.showInputDialog(null, mensagem, "Porta", JOptionPane.INFORMATION_MESSAGE, icone, null, porta));
+			}catch(NumberFormatException e){
+				verifica = 0;
+				JOptionPane.showMessageDialog(null, "Opa, ocorreu um erro na leitura, tente digítar um valor numérico.");
+			}
+		}while (verifica == 0);
+		return numero;
+	}
 }
