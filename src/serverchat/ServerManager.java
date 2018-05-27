@@ -1,9 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-package MessengSrserver;
+package serverchat;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -12,10 +8,15 @@ import java.net.SocketException;
 import java.util.StringTokenizer;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import static MessengSrserver.ServerConstant.*;
 
 public class ServerManager implements MessageListener
 {
+    public static final int CLIENT_NUMBER=100;
+    public static final String DISCONNECT_STRING="DISCONNECT";
+    public static final int SERVER_PORT=12345;
+    public static final int BACKLOG=100;
+    public static final int MULTICAST_SENDING_PORT=5555;
+    public static final int MULTICAST_LISTENING_PORT=5554;
     ExecutorService serverExeCutor;
     ServerSocket server;
     Socket clientSocket;

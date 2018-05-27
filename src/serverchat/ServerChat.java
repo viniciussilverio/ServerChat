@@ -4,8 +4,8 @@ package serverchat;
 public class ServerChat {
 public static void main(String[] args)
     {
-        MessengSrserver.ServerManager serverManager=new MessengSrserver.ServerManager();
-        MessengSrserver.ServerMonitor monitor=new MessengSrserver.ServerMonitor(serverManager);
+        ServerManager serverManager=new ServerManager();
+        ServerMonitor monitor=new ServerMonitor(serverManager);
 
         monitor.setVisible(true);
     }

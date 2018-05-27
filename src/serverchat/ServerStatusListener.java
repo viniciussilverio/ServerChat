@@ -1,9 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-package MessengSrserver;
+package serverchat;
 
 public interface ServerStatusListener
 {

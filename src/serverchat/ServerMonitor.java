@@ -1,15 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/*
- * ServerMonitor.java
- *
- * Created on Jan 1, 2004, 2:37:44 PM
- */
-
-package MessengSrserver;
+package serverchat;
 
 import java.awt.BorderLayout;
 import javax.swing.DefaultListSelectionModel;

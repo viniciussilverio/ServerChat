@@ -1,22 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-package MessengSrserver;
+package serverchat;
 
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.StringTokenizer;
-import static MessengSrserver.ServerConstant.*;
 
 
 public class Clients implements Runnable
 {
+    public static final String DISCONNECT_STRING="DISCONNECT";
     Socket client;
     ObjectInputStream input;
     ObjectOutputStream output;
